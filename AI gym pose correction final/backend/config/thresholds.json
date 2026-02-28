@@ -1,0 +1,17 @@
+{
+  "squat": {
+    "standing": {
+      "knee_angle": { "min": 170, "max": 180 },
+      "back_angle": { "min": 165, "max": 180 },
+      "vertical_alignment_threshold": 0.08
+    },
+    "squatting": {
+      "knee_angle": { "min": 50, "max": 130 },
+      "back_angle": { "min": 50, "max": 110 },
+      "knee_forward_threshold": 0.15,
+      "hip_displacement_min": 0.05,
+      "descent_speed_max": 5.0,
+      "ascent_speed_min": 2.0
+    }
+  }
+}
