@@ -1,13 +1,3 @@
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-venv/
-env/
-.env
-.DS_Store
-.ipynb_checkpoints/
-
 # Miscellaneous
 *.class
 *.log
