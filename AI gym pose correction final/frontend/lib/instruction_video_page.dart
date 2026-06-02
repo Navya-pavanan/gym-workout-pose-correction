@@ -93,7 +93,7 @@ class _InstructionVideoPageState extends State<InstructionVideoPage> {
                       context,
                       MaterialPageRoute(
                         // Using pushReplacement so user doesn't go back to video from upload page
-                        builder: (_) => const UploadVideoPage(),
+                        builder: (_) => const UploadVideoPage(exerciseType: 'squat'),
                       ),
                     );
                   },

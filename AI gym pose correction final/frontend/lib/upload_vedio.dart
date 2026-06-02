@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'analysis_loading_page.dart';
 
-
 class UploadVideoPage extends StatefulWidget {
-  const UploadVideoPage({super.key});
+  // ✅ Accept exercise type from SelectExercisePage
+  final String exerciseType;
+
+  const UploadVideoPage({
+    super.key,
+    required this.exerciseType,
+  });
 
   @override
   State<UploadVideoPage> createState() => _UploadVideoPageState();
@@ -38,9 +43,9 @@ class _UploadVideoPageState extends State<UploadVideoPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              "Upload your Squat video",
-              style: TextStyle(
+            Text(
+              "Upload your ${widget.exerciseType} video",
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -71,16 +76,26 @@ class _UploadVideoPageState extends State<UploadVideoPage> {
                     Text(
                       _videoFile == null
                           ? "Tap to upload from gallery"
-                          : "Video selected",
+                          : "Video selected ✅",
                       style: const TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
+                    if (_videoFile != null) ...[
+                      const SizedBox(height: 8),
+                      Text(
+                        _videoFile!.path.split('/').last,
+                        style: const TextStyle(
+                          fontSize: 13,
+                          color: Colors.grey,
+                        ),
+                      ),
+                    ],
                     if (_videoFile == null) ...[
                       const SizedBox(height: 8),
                       const Text(
-                        "Upload video less than 30 s",
+                        "Upload video less than 30s",
                         style: TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
@@ -94,22 +109,24 @@ class _UploadVideoPageState extends State<UploadVideoPage> {
 
             const Spacer(),
 
-            /// 🔹 Continue Button
+            /// 🔹 Analyze Button — passes video + exercise to loading page
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: _videoFile == null ? null : () {
-                       Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                            builder: (_) => const AnalysisLoadingPage(),
-                              ),
-                            );
-                          },
-
-                // onPressed: _videoFile == null ? null : () {
-                //   // Next: AI analysis page
-                // },
+                onPressed: _videoFile == null
+                    ? null
+                    : () {
+                        // ✅ Pass both videoFile and exerciseType to loading page
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => AnalysisLoadingPage(
+                              videoFile: _videoFile!,
+                              exerciseType: widget.exerciseType,
+                            ),
+                          ),
+                        );
+                      },
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   shape: RoundedRectangleBorder(

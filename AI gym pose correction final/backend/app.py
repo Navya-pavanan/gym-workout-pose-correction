@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import json
 import cv2
 import numpy as np
+from flask_cors import CORS 
 
 from utils.file_utils import save_uploaded_video, delete_file
 from analysis.pose_estimation import get_pose_landmarks
@@ -15,6 +16,14 @@ from analysis.rule_engine import (
 from analysis.visual_feedback import generate_dual_feedback
 
 app = Flask(__name__)
+CORS(app) 
+app = Flask(__name__)
+CORS(app)
+
+# ✅ ADD THESE 3 LINES HERE
+@app.route("/ping", methods=["GET"])
+def ping():
+    return jsonify({"status": "Flask backend is running"}), 200
 
 # Load thresholds
 with open("config/thresholds.json") as f:

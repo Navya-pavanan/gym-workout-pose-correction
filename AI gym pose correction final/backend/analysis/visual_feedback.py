@@ -11,19 +11,6 @@ mp_draw = mp.solutions.drawing_utils
 
 
 def generate_visual_feedback(frame, landmarks, incorrect_joints, phase="squatting", additional_text=None):
-    """
-    Generate visual feedback image with colored landmarks.
-    
-    Args:
-        frame: Video frame (numpy array)
-        landmarks: MediaPipe pose landmarks
-        incorrect_joints: List of incorrect joint names (e.g., ["knee", "back"])
-        phase: "standing" or "squatting"
-        additional_text: Additional text to display
-    
-    Returns:
-        filepath: Path to saved image
-    """
     if frame is None or landmarks is None:
         return None
     
@@ -32,9 +19,9 @@ def generate_visual_feedback(frame, landmarks, incorrect_joints, phase="squattin
     
     # Map joint names to landmark indices
     joint_mapping = {
-        "knee": [26, 28],      # Right knee, Right ankle
-        "back": [12, 24],      # Right shoulder, Right hip
-        "posture": [12, 24]    # Same as back for alignment issues
+        "knee": [26, 28],
+        "back": [12, 24],
+        "posture": [12, 24]
     }
     
     # Collect all incorrect landmark indices
@@ -51,7 +38,6 @@ def generate_visual_feedback(frame, landmarks, incorrect_joints, phase="squattin
         x = int(landmark.x * w)
         y = int(landmark.y * h)
         
-        # Determine color and size
         if idx in incorrect_indices:
             color = (0, 0, 255)  # Red for incorrect
             radius = 8
@@ -59,9 +45,7 @@ def generate_visual_feedback(frame, landmarks, incorrect_joints, phase="squattin
             color = (0, 255, 0)  # Green for correct
             radius = 5
         
-        # Draw filled circle
         cv2.circle(annotated, (x, y), radius, color, -1)
-        # Draw white outline for contrast
         cv2.circle(annotated, (x, y), radius + 2, (255, 255, 255), 2)
     
     # Draw skeleton connections
@@ -79,7 +63,6 @@ def generate_visual_feedback(frame, landmarks, incorrect_joints, phase="squattin
         start_point = (int(start_landmark.x * w), int(start_landmark.y * h))
         end_point = (int(end_landmark.x * w), int(end_landmark.y * h))
         
-        # Color connection red if either endpoint is incorrect
         if start_idx in incorrect_indices or end_idx in incorrect_indices:
             line_color = (0, 0, 255)  # Red
         else:
@@ -114,11 +97,22 @@ def generate_visual_feedback(frame, landmarks, incorrect_joints, phase="squattin
                         cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
             y_offset += 35
     
-    # Additional text (e.g., depth info)
+    # Additional text
     if additional_text:
         y_offset += 10
         cv2.putText(annotated, additional_text, (10, y_offset),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 0), 1)
+
+    # ✅ Draw Legend
+    legend_x = w - 200
+    legend_y = h - 80
+    cv2.rectangle(annotated, (legend_x - 10, legend_y - 20), (w - 5, h - 5), (0, 0, 0), -1)
+    cv2.circle(annotated, (legend_x + 10, legend_y), 8, (0, 255, 0), -1)
+    cv2.putText(annotated, "Correct", (legend_x + 25, legend_y + 5),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
+    cv2.circle(annotated, (legend_x + 10, legend_y + 30), 8, (0, 0, 255), -1)
+    cv2.putText(annotated, "Incorrect", (legend_x + 25, legend_y + 35),
+                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
     
     # Save image
     filename = f"feedback_{phase}_{uuid.uuid4().hex[:8]}.png"
@@ -131,19 +125,9 @@ def generate_visual_feedback(frame, landmarks, incorrect_joints, phase="squattin
 def generate_dual_feedback(standing_frame, standing_landmarks, standing_issues,
                            squat_frame, squat_landmarks, squat_issues,
                            depth_info=None):
-    """
-    Generate two feedback images: one for standing, one for squatting.
-    
-    Returns:
-        {
-            "standing_image": filepath,
-            "squatting_image": filepath
-        }
-    """
     standing_joints = [issue["joint"] for issue in standing_issues]
     squat_joints = list(set([issue["joint"] for issue in squat_issues]))
     
-    # Additional text for squat image
     squat_text = f"Depth: {depth_info['min_knee']:.1f} degrees" if depth_info else None
     
     standing_path = generate_visual_feedback(

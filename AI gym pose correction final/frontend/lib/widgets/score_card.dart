@@ -10,6 +10,24 @@ class ScoreCard extends StatelessWidget {
     required this.confidence,
   });
 
+  String get _label {
+    if (score >= 70) return "Good";
+    if (score >= 40) return "Average";
+    return "Bad";
+  }
+
+  Color get _color {
+    if (score >= 70) return Colors.green;
+    if (score >= 40) return Colors.orange;
+    return Colors.red;
+  }
+
+  IconData get _icon {
+    if (score >= 70) return Icons.check_circle;
+    if (score >= 40) return Icons.warning;
+    return Icons.cancel;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,10 +42,10 @@ class ScoreCard extends StatelessWidget {
 
           Text(
             score.toString(),
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 56,
               fontWeight: FontWeight.bold,
-              color: Color(0xFFF59E0B),
+              color: _color,
             ),
           ),
 
@@ -46,18 +64,18 @@ class ScoreCard extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 6),
             decoration: BoxDecoration(
-              color: Colors.green.shade100,
+              color: _color.withOpacity(0.1),
               borderRadius: BorderRadius.circular(20),
             ),
-            child: const Row(
+            child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Icon(Icons.check_circle, size: 16, color: Colors.green),
-                SizedBox(width: 6),
+                Icon(_icon, size: 16, color: _color),
+                const SizedBox(width: 6),
                 Text(
-                  "Good",
+                  _label,
                   style: TextStyle(
-                    color: Colors.green,
+                    color: _color,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

@@ -1,29 +1,52 @@
 import 'package:flutter/material.dart';
 
-
 class SummaryCard extends StatelessWidget {
-  const SummaryCard({super.key});
+  final int totalFrames;
+  final int squatFrames;
+  final int correctFrames;
+  final double depthAchieved;
+
+  const SummaryCard({
+    super.key,
+    required this.totalFrames,
+    required this.squatFrames,
+    required this.correctFrames,
+    required this.depthAchieved,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      width: double.infinity,
+      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.grey.shade300),
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [BoxShadow(color: Colors.black12, blurRadius: 4)],
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "Quick Summary",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 12),
-          Text("Correct Joints: 8/10"),
-          Text("Areas to Improve: 2"),
-          Text("Analysis Date: 04/02/2026"),
+          const Text("Quick Summary",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+          const SizedBox(height: 12),
+          _row("Total Frames", "$totalFrames"),
+          _row("Squat Frames", "$squatFrames"),
+          _row("Correct Frames", "$correctFrames"),
+          _row("Depth Achieved", "${depthAchieved}°"),
+        ],
+      ),
+    );
+  }
+
+  Widget _row(String label, String value) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(label, style: const TextStyle(color: Colors.grey)),
+          Text(value, style: const TextStyle(fontWeight: FontWeight.bold)),
         ],
       ),
     );
