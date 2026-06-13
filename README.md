@@ -204,9 +204,9 @@ Through this project, I gained experience in:
 
 ## Author
 
-**Navya J**
-**Nekshtra V Nair**
-**Meenakshi HN**
-**Krishna P**
+**Navya J** <br>
+**Nekshtra V Nair**<br>
+**Meenakshi HN**<br>
+**Krishna P**<br>
 
-GitHub: https://github.com/Navya-pavanan
+GitHub: https://github.com/Navya-pavanan<br>https://github.com/Nekshatra2006<br>https://github.com/meenakshi-hn <br> https://github.com/Krishnaa-23
