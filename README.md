@@ -168,24 +168,24 @@ flutter run -d <device_id>
 ## Screenshots
 
 ### Home Page
-<img width="720" height="1600" alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/1ab5a82a-094d-486d-8a06-e9c67dc566a1" />
-<img width="720" height="1600" alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/76d65684-3051-412f-b065-84cf4ee95dd7" />
-<img width="720" height="1600" alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/4cee0057-1400-421f-841c-259a410d19e5" />
+<img width="200" height=auto alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/1ab5a82a-094d-486d-8a06-e9c67dc566a1" />
+<img width="200" height=auto alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/76d65684-3051-412f-b065-84cf4ee95dd7" />
+<img width="200" height=auto alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/4cee0057-1400-421f-841c-259a410d19e5" />
 
 ### Pose Detection
 
-<img width="720" height="1600" alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/19975af5-8a4f-4768-b2df-7976163e07c0" />
+<img width="200" height=auto alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/19975af5-8a4f-4768-b2df-7976163e07c0" />
 .
 
 ### Feedback System
 
-<img width="720" height="1600" alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/78cb3536-3a6f-4133-b228-ba68990a15b2" />
-<img width="720" height="1600" alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/8eb06366-5552-4c52-ab84-89cb3e6ba8d7" />
-<img width="720" height="1600" alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/2b5a05b2-138b-41a9-a3d1-9c0aab31951f" />
+<img width="200" height=auto alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/78cb3536-3a6f-4133-b228-ba68990a15b2" />
+<img width="200" height=auto alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/8eb06366-5552-4c52-ab84-89cb3e6ba8d7" />
+<img width="200" height=auto alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/2b5a05b2-138b-41a9-a3d1-9c0aab31951f" />
 <h4>if wrong</h4>
-<img width="720" height="1600" alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/db02a6da-dbb3-4eed-b88f-c8b134ec3378" />
+<img width="200" height=auto alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/db02a6da-dbb3-4eed-b88f-c8b134ec3378" />
 
-<img width="720" height="1600" alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/c33b7c7a-4743-494e-a255-1339eceb4df4" />
+<img width="200" height=auto alt="WhatsApp Image 2026-06-13 at 7 49 14 PM" src="https://github.com/user-attachments/assets/c33b7c7a-4743-494e-a255-1339eceb4df4" />
 
 
 ## Learning Outcomes
